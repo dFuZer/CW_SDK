@@ -1,3 +1,5 @@
+IF YOU WANT TO MAKE CUSTOM MOBS:
+
 Also, don't forget to modify the RigCreator.cs in your Unity Project
 script to add this line
 
