@@ -1,0 +1,14 @@
+{
+  "AssetBundlePath1": "C:/path/to/unityproject/Assets/AssetBundles/example_scene",
+  "AssetBundlePath2": "C:/path/to/unityproject/Assets/AssetBundles/example_mod",
+  
+  "#__COMMENT1__#": "You can only replace these paths after building the assetbundles for the first time !",
+  "BuildDllPath": "C:/path/to/cw_sdk/bin/Debug/netstandard2.1/EXAMPLE MOD.dll",
+
+  "#__COMMENT2__#": "You can only replace this path after building the DLL for the first time using dotnet build !",
+  "WorkshopModFolder": "C:/path/to/steam/workshop/content/2881650/123456789",
+
+  "#__COMMENT3__#": "You can only replace this path after publishing your mod to the workshop !",
+  "#__COMMENT4__#": "You can actually publish your mod with a random trash empty file if you want !",
+  "#__COMMENT5__#": "Then, rename this file to config.json, and do not forget to also update Directory.Build.props"
+}

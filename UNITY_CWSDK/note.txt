@@ -1,0 +1,18 @@
+Also, don't forget to modify the RigCreator.cs in your Unity Project
+script to add this line
+
+[ContextMenu("Generate Rig")]
+
+above
+
+public void ResetColliders()
+
+if you ever want to make mobs !
+
+It should look like this.
+
+[ContextMenu("Generate Rig")]
+public void ResetColliders()
+{
+  for (int i = 0; i < bodyparts.Count; i++)
+  ...

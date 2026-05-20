@@ -1,0 +1,12 @@
+.idea
+bin
+obj
+*.DotSettings.user
+UnlistedEntities.zip
+config.json
+update.bat
+unlisted-entities.sln
+decomp
+Directory.Build.props
+steam-build/build/*
+!steam-build/build/MOD_CONTENT_TO_INJECT
