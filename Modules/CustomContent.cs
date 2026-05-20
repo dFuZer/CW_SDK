@@ -1,23 +1,40 @@
 using UnityEngine;
 using System.Reflection;
-using System.Linq;
 using DbsContentApi;
 
 namespace ExampleMod;
 
+/// <summary>
+/// Central registry for all custom content shipped with this mod.
+/// Loads embedded asset bundles, then registers a map, a monster, and shop items through DbsContentApi.
+/// Bundle file names must match what you build in UNITY_CWSDK and ship beside the mod DLL.
+/// </summary>
 public static class CustomContent
 {
+    /// <summary>Asset bundle containing item/mob prefabs and UI sprites (built from UNITY_CWSDK).</summary>
     private const string BundleNameMod = "example_mod";
+
+    /// <summary>Asset bundle containing the custom playable scene.</summary>
     private const string BundleNameMap = "example_scene";
+
+    /// <summary>Shop tab used by example items; created once and reused in ItemConfig.category.</summary>
     public static ShopItemCategory TestCategory;
+
+    /// <summary>Loaded mod content bundle; null if Init failed early.</summary>
     public static AssetBundle? BundleMod { get; private set; }
+
+    /// <summary>Loaded map scene bundle; null if Init failed early.</summary>
     public static AssetBundle? BundleMap { get; private set; }
 
-
+    /// <summary>
+    /// Entry point called from <see cref="ExampleMod"/> on plugin load.
+    /// Loads bundles from the executing assembly's directory, then registers all content types.
+    /// </summary>
     public static void Init()
     {
         Logger.Log("Loading custom content...");
 
+        // Bundles are expected next to EXAMPLE MOD.dll (see update.ps1 / workshop folder layout).
         BundleMod = ContentLoader.LoadAssetBundle(Assembly.GetExecutingAssembly(), BundleNameMod);
         if (BundleMod == null)
         {
@@ -39,12 +56,20 @@ public static class CustomContent
         Logger.Log("Custom content successfully initialized.");
     }
 
+    /// <summary>
+    /// Registers the example map scene from the map bundle.
+    /// Scene asset name inside the bundle must match your Unity scene (TestScene.unity → "TestScene").
+    /// </summary>
     private static void RegisterMap()
     {
         string? scenePath = Maps.FindScenePath(BundleMap!, "TestScene");
         if (scenePath != null)
         {
-            Maps.RegisterMap(BundleMap!, scenePath, "Example Map");
+            Maps.RegisterMap(
+                BundleMap!,
+                scenePath,
+                "Example Map",
+                mapId: "example_mod.example_map");
         }
         else
         {
@@ -52,6 +77,11 @@ public static class CustomContent
         }
     }
 
+    /// <summary>
+    /// Registers a melee chaser bot cloned from DefaultCharacter.prefab in the mod bundle.
+    /// MobSetupConfig wires up standard monster components (sync, animation, nav mesh, etc.).
+    /// postSetup attaches Attack_Melee for close-range damage after the API finishes rig setup.
+    /// </summary>
     private static void RegisterMob()
     {
         var config = new MobSetupConfig
@@ -82,6 +112,7 @@ public static class CustomContent
             material: GameMaterial.M_Monster,
             postSetup: go =>
             {
+                // Bot AI lives on a child object created by Mobs.RegisterMonster.
                 GameObject botTestChar = Mobs.GetBotChildObject(go);
                 Mobs.AddBotChaserComponent(botTestChar, new BotChaserConfig { targetDistance = 1.5f });
 
@@ -100,6 +131,10 @@ public static class CustomContent
             });
     }
 
+    /// <summary>
+    /// Creates the custom shop category and defers item registration until the API is ready.
+    /// DeferRegistration avoids ordering issues with vanilla item tables during startup.
+    /// </summary>
     private static void RegisterItems()
     {
         TestCategory = Items.RegisterCustomCategory("Test Category");
@@ -111,6 +146,10 @@ public static class CustomContent
         });
     }
 
+    /// <summary>
+    /// Locates the vanilla Dog laser projectile prefab via Resources.
+    /// Reusing vanilla projectiles avoids authoring custom VFX/collision from scratch.
+    /// </summary>
     private static GameObject? GetDogLaserProjectileSource()
     {
         GameObject? dogPrefab = Resources.Load<GameObject>("Dog");
@@ -144,11 +183,16 @@ public static class CustomContent
         return attackDog.projectile;
     }
 
+    /// <summary>
+    /// Clones the Dog laser, strips default Projectile settings, and attaches custom hit logic.
+    /// The result is a DontDestroyOnLoad template instantiated by TestGunItemBehaviour when firing.
+    /// </summary>
     private static GameObject? CreateTestGunProjectilePrefab(GameObject source)
     {
         GameObject shotPrefab = Object.Instantiate(source);
         shotPrefab.name = "TestGunLaser";
 
+        // Remove original Projectile components so we can configure a clean projectile profile.
         foreach (Projectile existing in shotPrefab.GetComponents<Projectile>())
         {
             Object.DestroyImmediate(existing);
@@ -174,6 +218,9 @@ public static class CustomContent
         return shotPrefab;
     }
 
+    /// <summary>
+    /// Registers a simple clickable item from TestItem.prefab with apple material and shop metadata.
+    /// </summary>
     private static void RegisterTestItem()
     {
         GameObject? itemPrefab = ContentLoader.LoadPrefabFromBundle(BundleMod!, "TestItem.prefab");
@@ -197,6 +244,10 @@ public static class CustomContent
         });
     }
 
+    /// <summary>
+    /// Registers the laser gun: wires projectile prefab, fire point, materials, and shop entry.
+    /// Requires GetDogLaserProjectileSource and TestGun.prefab from the mod bundle.
+    /// </summary>
     private static void RegisterTestGun()
     {
         GameObject? laserSource = GetDogLaserProjectileSource();
@@ -221,6 +272,7 @@ public static class CustomContent
         var behaviour = itemPrefab.AddComponent<TestGunItemBehaviour>();
         behaviour.projectilePrefab = shotPrefab;
 
+        // FirePoint should be authored in the Unity prefab so shots originate from the barrel.
         Transform? firePoint = itemPrefab.transform.Find("FirePoint");
         if (firePoint == null)
         {
