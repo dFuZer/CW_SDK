@@ -4,18 +4,18 @@
   "#__COMMENT1__#": "Replace these paths after building the asset bundles for the first time.",
 
   "DebugDllPath": "C:/path/to/cw_sdk/bin/Debug/netstandard2.1/EXAMPLE MOD.dll",
-  "#__COMMENT2__#": "Used by update.ps1 for local testing (dotnet build, Debug configuration).",
+  "#__COMMENT2__#": "Replace this path after building using dotnet build",
 
   "ReleaseDllPath": "C:/path/to/cw_sdk/bin/Release/netstandard2.1/EXAMPLE MOD.dll",
-  "#__COMMENT3__#": "Used by prepare_final_build.ps1 when staging for Workshop publish (dotnet build -c Release).",
+  "#__COMMENT3__#": "Replace this path after building using dotnet build -c Release",
 
   "WorkshopModFolder": "C:/path/to/steam/workshop/content/2881650/123456789",
-  "#__COMMENT4__#": "Local Workshop folder for testing with update.ps1; set after publishing your mod.",
+  "#__COMMENT4__#": "Replace this path after publishing your mod on the workshop",
 
   "SteamCmdPath": "C:/path/to/steamcmd.exe",
   "SteamUsername": "my_steam_username",
-  "#__COMMENT5__#": "Used by publish_or_update_the_mod.ps1 when uploading to Steam Workshop.",
-  "#__COMMENT6__#": "This is the username you use to login to Steam !",
+  "#__COMMENT5__#": "Replace this path after downloading and installing steamcmd",
+  "#__COMMENT6__#": "Note: This is the username you use to login to Steam, not your display name !",
 
   "#__COMMENT7__#": "Rename this file to config.json and update ExampleMod.csproj (CWDir and DbsContentApiDir)."
 }
