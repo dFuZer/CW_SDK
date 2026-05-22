@@ -153,4 +153,10 @@
             <HintPath>$(DbsContentApiDir)\DbsContentApi.dll</HintPath>
         </Reference>
     </ItemGroup>
+
+    <ItemGroup>
+        <Reference Update="*">
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
 </Project>
