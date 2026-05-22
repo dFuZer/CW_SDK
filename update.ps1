@@ -1,3 +1,8 @@
+# Before you can run this script, you need to build the mod in Debug + Release mode, and update the config.json file with the correct paths.
+# You also need to publish your mod on the workshop, subscribe to it, and update the config.json file with the correct workshop folder path.
+# You also need to build the asset bundles and update the config.json file with the correct asset bundle paths.
+# Then, rename EXAMPLE.config.json to config.json
+
 # Check if config file exists
 $configPath = Join-Path $PSScriptRoot "config.json"
 if (!(Test-Path $configPath)) {
