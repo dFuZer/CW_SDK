@@ -14,7 +14,7 @@
 
   "SteamCmdPath": "C:/path/to/steamcmd.exe",
   "SteamUsername": "my_steam_username",
-  "#__COMMENT5__#": "Replace this path after downloading and installing steamcmd",
+  "#__COMMENT5__#": "Replace these paths after downloading and installing steamcmd. Then, publish your mod.",
   "#__COMMENT6__#": "Note: This is the username you use to login to Steam, not your display name !",
 
   "#__COMMENT7__#": "Rename this file to config.json and update ExampleMod.csproj (CWDir and DbsContentApiDir)."

@@ -1,10 +1,5 @@
-# Publish or update your mod on Steam Workshop.
-# 1. Run .\prepare_final_build.ps1 to stage the Release build.
-# 2. Update steam-build\mod.vdf (contentfolder, previewfile, publishedfileid).
-# 3. Run: .\publish_or_update_the_mod.ps1
-
-# You can also run this script initially with an empty file
-# inside of the build folder, to update the config.json path.
+# THIS SCRIPT PUBLISHES OR UPDATES THE MOD ON STEAM WORKSHOP.
+# Requirement: prepare_final_build.ps1 must have been run to stage the Release build.
 
 $configPath = Join-Path $PSScriptRoot "config.json"
 if (!(Test-Path $configPath)) {

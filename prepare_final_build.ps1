@@ -1,4 +1,6 @@
 # THIS SCRIPT COMPILES THE MOD IN RELEASE MODE AND STAGES THE BUILD FOR THE WORKSHOP.
+# Requirements: The SDK must be built in Release mode (dotnet build -c Release) and the Asset bundles must be built.
+# Paths must be updated in config.json
 
 $configPath = Join-Path $PSScriptRoot "config.json"
 if (!(Test-Path $configPath)) {
