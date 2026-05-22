@@ -1,3 +1,5 @@
+# THIS SCRIPT COMPILES THE MOD AND UPDATES THE ASSET BUNDLES INSIDE THE WORKSHOP FOLDER FOR LOCAL TESTING.
+
 # Before you can run this script, you need to build the mod in Debug + Release mode, and update the config.json file with the correct paths.
 # You also need to publish your mod on the workshop, subscribe to it, and update the config.json file with the correct workshop folder path.
 # You also need to build the asset bundles and update the config.json file with the correct asset bundle paths.

@@ -12,5 +12,10 @@
   "WorkshopModFolder": "C:/path/to/steam/workshop/content/2881650/123456789",
   "#__COMMENT4__#": "Local Workshop folder for testing with update.ps1; set after publishing your mod.",
 
-  "#__COMMENT5__#": "Rename this file to config.json and update Directory.Build.props (EXAMPLE.Directory.Build.props)."
+  "SteamCmdPath": "C:/path/to/steamcmd.exe",
+  "SteamUsername": "my_steam_username",
+  "#__COMMENT5__#": "Used by publish_or_update_the_mod.ps1 when uploading to Steam Workshop.",
+  "#__COMMENT6__#": "This is the username you use to login to Steam !",
+
+  "#__COMMENT7__#": "Rename this file to config.json and update ExampleMod.csproj (CWDir and DbsContentApiDir)."
 }

@@ -1,3 +1,5 @@
+# THIS SCRIPT COMPILES THE MOD IN RELEASE MODE AND STAGES THE BUILD FOR THE WORKSHOP.
+
 $configPath = Join-Path $PSScriptRoot "config.json"
 if (!(Test-Path $configPath)) {
     Write-Error "Config file not found ! Please rename EXAMPLE.config.json to config.json and update the paths !"
