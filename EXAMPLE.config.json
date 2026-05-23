@@ -1,21 +1,19 @@
 {
+  "#__SETUP__#": "Rename to config.json and set CWDir / DbsContentApiDir in ExampleMod.csproj.",
+
+  "#__STEP1__#": "Build asset bundles in Unity, then set these paths.",
   "AssetBundlePath1": "C:/path/to/unityproject/Assets/AssetBundles/example_scene",
   "AssetBundlePath2": "C:/path/to/unityproject/Assets/AssetBundles/example_mod",
-  "#__COMMENT1__#": "Replace these paths after building the asset bundles for the first time.",
 
+  "#__STEP2__#": "Run dotnet build and dotnet build -c Release, then set these paths.",
   "DebugDllPath": "C:/path/to/cw_sdk/bin/Debug/netstandard2.1/EXAMPLE MOD.dll",
-  "#__COMMENT2__#": "Replace this path after building using dotnet build",
-
   "ReleaseDllPath": "C:/path/to/cw_sdk/bin/Release/netstandard2.1/EXAMPLE MOD.dll",
-  "#__COMMENT3__#": "Replace this path after building using dotnet build -c Release",
 
-  "WorkshopModFolder": "C:/path/to/steam/workshop/content/2881650/123456789",
-  "#__COMMENT4__#": "Replace this path after publishing your mod on the workshop",
-
+  "#__STEP3__#": "Set SteamCMD login and installation path, then run publish_or_update_the_mod.ps1.",
   "SteamCmdPath": "C:/path/to/steamcmd.exe",
   "SteamUsername": "my_steam_username",
-  "#__COMMENT5__#": "Replace these paths after downloading and installing steamcmd. Then, publish your mod.",
-  "#__COMMENT6__#": "Note: This is the username you use to login to Steam, not your display name !",
+  "#__NOTE__#": "SteamUsername is your login name, not your display name.",
 
-  "#__COMMENT7__#": "Rename this file to config.json and update ExampleMod.csproj (CWDir and DbsContentApiDir)."
+  "#__STEP4__#": "Subscribe to your mod on Workshop, then set this folder path.",
+  "WorkshopModFolder": "C:/path/to/steam/workshop/content/2881650/123456789"
 }
