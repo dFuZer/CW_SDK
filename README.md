@@ -4,7 +4,6 @@
 
 **Watch this first.** The tutorial walks through everything in this SDK and how to get started modding Content Warning end to end:
 
-> **TODO:** Replace this placeholder with your tutorial link.  
 > **[YouTube — Full Content Warning modding tutorial](https://youtu.be/Jd8gq_ZmvmA)**
 
 It covers setup, Unity, asset bundles, building, local testing, and publishing to Steam Workshop. The rest of this README is a written reference you can come back to while you work.
@@ -340,4 +339,4 @@ If you register maps, mobs, or items, all players need your mod **and** DbsConte
 - [BD's content API (DbsContentApi)](https://steamcommunity.com/sharedfiles/filedetails/?id=3680666123)
 - [SteamCMD documentation](https://developer.valvesoftware.com/wiki/SteamCMD)
 
-Good luck — watch the [video tutorial](https://youtu.be/Jd8gq_ZmvmA) first, then use this README as a checklist while you work.
+Good luck — watch the [video tutorial](https://youtu.be/Jd8gq_ZmvmA).
